@@ -201,7 +201,7 @@ class XMLHttpRequestBase {
   }
 
   getResponseHeader(header: string): ?string {
-    var value = this._lowerCaseResponseHeaders[header.toLowerCase()];
+    var value = this._lowerCaseResponseHeaders[header];
     return value !== undefined ? value : null;
   }
 
@@ -209,7 +209,7 @@ class XMLHttpRequestBase {
     if (this.readyState !== this.OPENED) {
       throw new Error('Request has not been opened');
     }
-    this._headers[header.toLowerCase()] = value;
+    this._headers[header] = value;
   }
 
   open(method: string, url: string, async: ?boolean): void {
@@ -268,7 +268,7 @@ class XMLHttpRequestBase {
     var headers = responseHeaders || {};
     this._lowerCaseResponseHeaders =
       Object.keys(headers).reduce((lcaseHeaders, headerName) => {
-        lcaseHeaders[headerName.toLowerCase()] = headers[headerName];
+        lcaseHeaders[headerName] = headers[headerName];
         return lcaseHeaders;
       }, {});
   }

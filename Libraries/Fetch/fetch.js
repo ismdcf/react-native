@@ -55,7 +55,9 @@ var self = {};
     if (/[^a-z0-9\-#$%&'*+.\^_`|~]/i.test(name)) {
       throw new TypeError('Invalid character in header field name')
     }
-    return name.toLowerCase()
+    //@Apptizer 26/08/2016
+    //toLowerCase Removed because customerheaders being converted to lowercase
+    return name
   }
 
   function normalizeValue(value) {
